@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell 
+    x:Class="MauiDApp.AppShellMobile"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiDApp"
+    xmlns:views="clr-namespace:MauiDApp.Views"
+    Shell.FlyoutBehavior="Disabled">
+    
+    <TabBar>
+        <Tab Title="Home"
+            Icon="home_outline">
+            <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
+        </Tab>
+        <Tab Title="Search"
+            Icon="search">
+            <ShellContent ContentTemplate="{DataTemplate views:SearchPage}" />
+        </Tab>
+        <Tab Title="Upload"
+            Icon="cloud_upload_outline">
+            <ShellContent ContentTemplate="{DataTemplate views:UploadArtworkPage}" />
+        </Tab>
+        <Tab Title="Notification"
+            Icon="bell_outline">
+            <ShellContent ContentTemplate="{DataTemplate views:NotificationPage}" />
+        </Tab>
+        <Tab Title="My profile"
+            Icon="person_outline">
+            <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
+        </Tab>
+    </TabBar>
+    
+</Shell>
