@@ -24,7 +24,7 @@
             Icon="bell_outline">
             <ShellContent ContentTemplate="{DataTemplate views:NotificationPage}" />
         </Tab>
-        <Tab Title="My profile"
+        <Tab Title="Profile"
             Icon="person_outline">
             <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
         </Tab>

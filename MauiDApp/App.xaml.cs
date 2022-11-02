@@ -6,7 +6,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-        App.Current.UserAppTheme = AppTheme.Light;
+        //App.Current.UserAppTheme = AppTheme.Light;
 
         if (DeviceInfo.Idiom == DeviceIdiom.Phone)
         {

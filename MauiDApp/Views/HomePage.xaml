@@ -3,22 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiDApp.Views.HomePage">
 
-    <RefreshView IsRefreshing="{Binding IsRefreshing}"
-                 Command="{Binding RefreshCommand}">
-        
-        <VerticalStackLayout>
-            <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        </VerticalStackLayout>
-        <!--<ScrollView>
-            <FlexLayout Direction="Row"
-                    Wrap="Wrap"
-                    AlignItems="Center"
-                    AlignContent="Center"
-                    BindableLayout.ItemsSource="{Binding Items}"
-                    BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" />
-        </ScrollView>-->
+    <RefreshView 
+        IsRefreshing="{Binding IsRefreshing}"
+        Command="{Binding RefreshCommand}">
+
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding Items}"
+                            SelectionMode="None">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10">
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Image Grid.RowSpan="2"
+                                   Source="{Binding ImageUrl}"
+                                   Aspect="AspectFill"
+                                   HeightRequest="60"
+                                   WidthRequest="60" />
+                            
+                            <Label Grid.Column="1"
+                                   Text="{Binding Title}"
+                                   FontAttributes="Bold" />
+                            
+                            <Label Grid.Row="1"
+                                   Grid.Column="1"
+                                   Text="{Binding Creator}"
+                                   FontAttributes="Italic"
+                                   VerticalOptions="End" />
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+        </ScrollView>
     </RefreshView>
+
+   
 </ContentPage>
