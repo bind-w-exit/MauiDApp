@@ -41,4 +41,11 @@
     <Color x:Key="Blue200Accent">#72ACF1</Color>
     <Color x:Key="Blue300Accent">#A7CBF6</Color>
 
+    <Color x:Key="GrayBackground">#222222</Color>
+    <Color x:Key="GrayBody">#333333</Color>
+    <Color x:Key="GrayLabel">#555555</Color>
+    <Color x:Key="WhiteBackground">#F8F8F8</Color>
+    <Color x:Key="OffWhite">#FCFCFC</Color>
+    
+
 </ResourceDictionary>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiDApp.Views.HomePage" BackgroundColor="#F8F8F8">
+             x:Class="MauiDApp.Views.HomePage"
+             xmlns:local="clr-namespace:MauiDApp.Views">
 
     <RefreshView 
         IsRefreshing="{Binding IsRefreshing}"
@@ -13,66 +14,7 @@
 
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-
-                            <Grid>
-                                <Border StrokeShape="RoundRectangle 32"
-                                        Padding="10" Margin="10"
-                                        Stroke="White">
-
-                                    <Border.Shadow>
-                                        <Shadow Brush="Black"
-                                                Offset="0, 10"
-                                                Radius="24"
-                                                Opacity="0.08" />
-                                    </Border.Shadow>
-
-                                    <VerticalStackLayout>
-
-                                        <Border StrokeShape="RoundRectangle 24">
-                                            <Image Source="{Binding ImageUrl}"
-                                                   Aspect="Fill" />
-                                        </Border>
-
-                                        <Label Text="{Binding Title}"
-                                               FontFamily="EpilogueBold"
-                                               FontSize="24"
-                                               Margin="0,10,0,0"
-                                               TextColor="#222222"/>
-
-                                        <Grid ColumnDefinitions="Auto, Auto, *" ColumnSpacing="10">
-                                            
-                                            <Border StrokeShape="Ellipse" Grid.Column="0">
-                                                <Image Source="{Binding ImageUrl}"
-                                                       WidthRequest="50"
-                                                       Aspect="AspectFit"/>
-                                            </Border>
-
-                                            <VerticalStackLayout Grid.Column="1">
-                                                <Label FontFamily="EpilogueBold"
-                                                       FontSize="18"
-                                                       Text="{Binding Creator}"
-                                                       TextColor="#333333"/>
-
-                                                <Label FontFamily="EpilogueMedium"
-                                                       FontSize="14"
-                                                       Grid.Row="1"
-                                                       Text="Creator"
-                                                       TextColor="#555555" />
-                                            </VerticalStackLayout>
-
-                                            <Image Grid.Column="2"
-                                                   Source="heart_outline"
-                                                   WidthRequest="25"
-                                                   HorizontalOptions="End"
-                                                   Margin="10"/>
-                                                   
-                                        </Grid>
-                                       
-                                    </VerticalStackLayout>
-
-                                </Border>
-                            </Grid>
-
+                            <local:ItemView />
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
 
