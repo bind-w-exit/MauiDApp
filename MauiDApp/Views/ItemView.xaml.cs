@@ -2,8 +2,9 @@ namespace MauiDApp.Views;
 
 public partial class ItemView : ContentView
 {
-	public ItemView()
+    public ItemView()
 	{
 		InitializeComponent();
-	}
+    }
+
 }

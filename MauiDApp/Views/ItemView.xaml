@@ -1,60 +1,73 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiDApp.Views.ItemView">
+<ContentView
+    x:Class="MauiDApp.Views.ItemView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Grid>
-        <Border StrokeShape="RoundRectangle 32"
-                Padding="10" Margin="10"
-                Stroke="Transparent" 
-                BackgroundColor="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource GrayBody}}">
+        <Border
+            Margin="10"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                              Dark={StaticResource GrayBody}}"
+            Stroke="Transparent"
+            StrokeShape="RoundRectangle 32">
 
             <Border.Shadow>
-                <Shadow Brush="Black"
-                        Offset="0, 10"
-                        Radius="24"
-                        Opacity="0.08" />
+                <Shadow
+                    Brush="Black"
+                    Opacity="0.08"
+                    Radius="24"
+                    Offset="0, 10" />
             </Border.Shadow>
 
             <VerticalStackLayout>
 
                 <Border StrokeShape="RoundRectangle 24">
-                    <Image Source="{Binding ImageUrl}"
-                           Aspect="Fill" />
+                    <ImageButton Aspect="Fill" Source="{Binding ImageUrl}" />
                 </Border>
 
-                <Label Text="{Binding Title}"
-                       FontFamily="EpilogueBold"
-                       FontSize="24"
-                       Margin="0,10,0,0"
-                       TextColor="{AppThemeBinding Light={StaticResource GrayBackground}, Dark={StaticResource OffWhite}}" />
+                <Label
+                    Margin="0,10,0,0"
+                    FontFamily="EpilogueBold"
+                    FontSize="24"
+                    Text="{Binding Title}"
+                    TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                                Dark={StaticResource OffWhite}}" />
 
                 <Grid ColumnDefinitions="Auto, Auto, *" ColumnSpacing="10">
 
-                    <Border StrokeShape="Ellipse" Grid.Column="0">
-                        <Image Source="{Binding ImageUrl}"
-                               WidthRequest="50"
-                               Aspect="AspectFit"/>
+                    <Border Grid.Column="0" StrokeShape="Ellipse">
+                        <ImageButton
+                            Aspect="AspectFit"
+                            Source="{Binding ImageUrl}"
+                            WidthRequest="50" />
                     </Border>
 
                     <VerticalStackLayout Grid.Column="1">
-                        <Label FontFamily="EpilogueBold"
-                               FontSize="18"
-                               Text="{Binding Creator}"
-                               TextColor="{AppThemeBinding Light={StaticResource GrayBody}, Dark={StaticResource OffWhite}}" />
+                        <Label
+                            FontFamily="EpilogueBold"
+                            FontSize="18"
+                            Text="{Binding Creator}"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayBody},
+                                                        Dark={StaticResource OffWhite}}" />
 
-                        <Label FontFamily="EpilogueMedium"
-                               FontSize="14"
-                               Grid.Row="1"
-                               Text="Creator"
-                               TextColor="{AppThemeBinding Light={StaticResource GrayLabel}, Dark={StaticResource WhiteBackground}}" />
+                        <Label
+                            Grid.Row="1"
+                            FontFamily="EpilogueMedium"
+                            FontSize="14"
+                            Text="Creator"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayLabel},
+                                                        Dark={StaticResource WhiteBackground}}" />
                     </VerticalStackLayout>
 
-                    <Image Grid.Column="2"
-                           Source="{AppThemeBinding Light=heart_outline, Dark=heart_outline_dark}"
-                           WidthRequest="25"
-                           HorizontalOptions="End"
-                           Margin="10"/>
+                    <ImageButton
+                        Grid.Column="2"
+                        Margin="10"
+                        HorizontalOptions="End"
+                        Source="{AppThemeBinding Light=heart_outline,
+                                                 Dark=heart_outline_dark}"
+                        WidthRequest="25" />
 
                 </Grid>
 

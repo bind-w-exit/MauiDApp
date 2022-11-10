@@ -5,11 +5,14 @@ using System.Collections.ObjectModel;
 
 namespace MauiDApp.ViewModels
 {
-    [INotifyPropertyChanged]
-    public partial class HomePageViewModel
+    public partial class HomePageViewModel : BaseViewModel
     {
         [ObservableProperty]
         private bool isRefreshing;
+
+        [ObservableProperty]
+        private bool boll;
+
 
         [ObservableProperty]
         private ObservableCollection<Item> items;
@@ -49,8 +52,15 @@ namespace MauiDApp.ViewModels
         private async void Refresh()
         {
             IsRefreshing = true;
-            await Task.Delay(TimeSpan.FromSeconds(2));
+            await Task.Delay(TimeSpan.FromSeconds(5));
             IsRefreshing = false;
+        }
+
+        [RelayCommand]
+        void ItemFav(Item item)
+        {
+            item.IsFavorite = !item.IsFavorite;
+            OnPropertyChanged(nameof(item));
         }
     }
 }
