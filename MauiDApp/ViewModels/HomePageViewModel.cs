@@ -13,9 +13,10 @@ namespace MauiDApp.ViewModels
         [ObservableProperty]
         private bool boll;
 
+        private ObservableCollection<Item> items;
 
         [ObservableProperty]
-        private ObservableCollection<Item> items;
+        private ObservableCollection<ItemViewModel> itemsVM;
 
         public HomePageViewModel()
         {
@@ -46,6 +47,13 @@ namespace MauiDApp.ViewModels
                     "C4EA97",
                     true)
             };
+
+            itemsVM = new ObservableCollection<ItemViewModel>();
+
+            foreach (var item in items)
+            {
+                itemsVM.Add(new ItemViewModel(item));
+            }
         }
 
         [RelayCommand]
@@ -56,11 +64,5 @@ namespace MauiDApp.ViewModels
             IsRefreshing = false;
         }
 
-        [RelayCommand]
-        void ItemFav(Item item)
-        {
-            item.IsFavorite = !item.IsFavorite;
-            OnPropertyChanged(nameof(item));
-        }
     }
 }

@@ -54,6 +54,7 @@
 	  <None Remove="Resources\Images\heart_dark.svg" />
 	  <None Remove="Resources\Images\heart_outline.svg" />
 	  <None Remove="Resources\Images\heart_outline_dark.svg" />
+	  <None Remove="Resources\Images\logo_dark.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
