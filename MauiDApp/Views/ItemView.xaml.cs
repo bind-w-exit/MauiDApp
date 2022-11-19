@@ -1,8 +1,6 @@
-using MauiDApp.ViewModels;
-
 namespace MauiDApp.Views;
 
-public partial class ItemView : ContentView
+public partial class ItemView : Grid
 {
     public ItemView()
 	{

@@ -4,7 +4,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiDApp.Views"
-    xmlns:viewModels="clr-namespace:MauiDApp.ViewModels">
+    xmlns:viewmodels="clr-namespace:MauiDApp.ViewModels"
+    x:DataType="viewmodels:HomePageViewModel">
 
     <RefreshView Command="{Binding RefreshCommand}" IsRefreshing="{Binding IsRefreshing}">
 
@@ -13,7 +14,7 @@
                 <StackLayout>
 
                     <Image
-                        Margin="15,15,0,0"
+                        Margin="15,20,0,0"
                         HeightRequest="37"
                         HorizontalOptions="Start"
                         Source="{AppThemeBinding Light=logo,
@@ -47,15 +48,16 @@
                         <SearchBar HeightRequest="40" Placeholder="Search items, collections, and accounts" />
                     </Border>
 
+                    <local:ItemView BindingContext="{Binding ItemVM}" />
 
-                    <StackLayout BindableLayout.ItemsSource="{Binding ItemsVM}">
+                    <CollectionView ItemsSource="{Binding ItemsVM}">
 
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="viewmodels:ItemViewModel">
                                 <local:ItemView />
                             </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </StackLayout>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
 
                 </StackLayout>
             </ScrollView>

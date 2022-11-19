@@ -47,5 +47,4 @@
     <Color x:Key="InputBackground">#F0F0F0</Color>
     <Color x:Key="Placeholder">#888888</Color>
 
-
 </ResourceDictionary>

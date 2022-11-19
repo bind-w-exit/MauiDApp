@@ -1,97 +1,101 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView
+<Grid
     x:Class="MauiDApp.Views.ItemView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModels="clr-namespace:MauiDApp.ViewModels">
+    xmlns:viewmodels="clr-namespace:MauiDApp.ViewModels"
+    x:DataType="viewmodels:ItemViewModel">
 
-    <Grid>
-        <Border
-            Margin="12"
-            Padding="10"
-            BackgroundColor="{AppThemeBinding Light={StaticResource White},
-                                              Dark={StaticResource GrayBody}}"
-            Stroke="Transparent"
-            StrokeShape="RoundRectangle 32">
 
-            <Border.Shadow>
-                <Shadow
-                    Brush="Black"
-                    Opacity="0.08"
-                    Radius="24"
-                    Offset="0, 10" />
-            </Border.Shadow>
+    <Border
+        Margin="12"
+        Padding="10"
+        BackgroundColor="{AppThemeBinding Light={StaticResource White},
+                                          Dark={StaticResource GrayBody}}"
+        Stroke="Transparent"
+        StrokeShape="RoundRectangle 32">
 
-            <VerticalStackLayout>
+        <Border.Shadow>
+            <Shadow
+                Brush="Black"
+                Opacity="0.08"
+                Radius="24"
+                Offset="0, 10" />
+        </Border.Shadow>
 
-                <Border StrokeShape="RoundRectangle 24">
-                    <ImageButton
-                        Aspect="AspectFill"
-                        BackgroundColor="Transparent"
-                        HeightRequest="375"
-                        Source="{Binding ImageUrl}" />
+        <VerticalStackLayout>
+
+            <Border StrokeShape="RoundRectangle 24">
+                <ImageButton
+                    Aspect="AspectFill"
+                    BackgroundColor="Transparent"
+                    HeightRequest="375"
+                    Source="{Binding ImageUrl}" />
+            </Border>
+
+            <Label
+                Margin="0,10,0,0"
+                FontFamily="EpilogueBold"
+                FontSize="24"
+                Text="{Binding Title}"
+                TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                            Dark={StaticResource OffWhite}}" />
+
+            <Grid
+                Margin="0,10,0,10"
+                ColumnDefinitions="Auto, Auto, *"
+                ColumnSpacing="10">
+
+                <Border
+                    Grid.Column="0"
+                    HeightRequest="50"
+                    StrokeShape="Ellipse"
+                    WidthRequest="50">
+                    <ImageButton Aspect="AspectFill" Source="{Binding ImageUrl}" />
                 </Border>
 
-                <Label
-                    Margin="0,10,0,0"
-                    FontFamily="EpilogueBold"
-                    FontSize="24"
-                    Text="{Binding Title}"
-                    TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
-                                                Dark={StaticResource OffWhite}}" />
+                <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
+                    <Label
+                        FontFamily="EpilogueBold"
+                        FontSize="18"
+                        Text="{Binding Creator}"
+                        TextColor="{AppThemeBinding Light={StaticResource GrayBody},
+                                                    Dark={StaticResource OffWhite}}" />
 
-                <Grid ColumnDefinitions="Auto, Auto, *" ColumnSpacing="10">
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="EpilogueMedium"
+                        FontSize="14"
+                        Text="Creator"
+                        TextColor="{AppThemeBinding Light={StaticResource GrayLabel},
+                                                    Dark={StaticResource WhiteBackground}}" />
+                </VerticalStackLayout>
 
-                    <Border Grid.Column="0" StrokeShape="Ellipse">
-                        <ImageButton
-                            Aspect="AspectFit"
-                            Source="{Binding ImageUrl}"
-                            WidthRequest="50" />
-                    </Border>
+                <ImageButton
+                    Grid.Column="2"
+                    Margin="10"
+                    Command="{Binding ItemFavCommand}"
+                    CommandParameter="{Binding .}"
+                    HorizontalOptions="End"
+                    WidthRequest="30">
+                    <ImageButton.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsFavorite}"
+                            TargetType="ImageButton"
+                            Value="True">
+                            <Setter Property="Source" Value="heart" />
+                        </DataTrigger>
+                        <DataTrigger
+                            Binding="{Binding IsFavorite}"
+                            TargetType="ImageButton"
+                            Value="False">
+                            <Setter Property="Source" Value="{AppThemeBinding Light=heart_outline, Dark=heart_outline_dark}" />
+                        </DataTrigger>
+                    </ImageButton.Triggers>
+                </ImageButton>
 
-                    <VerticalStackLayout Grid.Column="1">
-                        <Label
-                            FontFamily="EpilogueBold"
-                            FontSize="18"
-                            Text="{Binding Creator}"
-                            TextColor="{AppThemeBinding Light={StaticResource GrayBody},
-                                                        Dark={StaticResource OffWhite}}" />
+            </Grid>
+        </VerticalStackLayout>
+    </Border>
 
-                        <Label
-                            Grid.Row="1"
-                            FontFamily="EpilogueMedium"
-                            FontSize="14"
-                            Text="Creator"
-                            TextColor="{AppThemeBinding Light={StaticResource GrayLabel},
-                                                        Dark={StaticResource WhiteBackground}}" />
-                    </VerticalStackLayout>
-
-                    <ImageButton
-                        Grid.Column="2"
-                        Margin="10"
-                        Command="{Binding ItemFavCommand}"
-                        CommandParameter="{Binding .}"
-                        HorizontalOptions="End"
-                        WidthRequest="25">
-                        <ImageButton.Triggers>
-                            <DataTrigger
-                                Binding="{Binding IsFavorite}"
-                                TargetType="ImageButton"
-                                Value="True">
-                                <Setter Property="Source" Value="heart" />
-                            </DataTrigger>
-                            <DataTrigger
-                                Binding="{Binding IsFavorite}"
-                                TargetType="ImageButton"
-                                Value="False">
-                                <Setter Property="Source" Value="{AppThemeBinding Light=heart_outline, Dark=heart_outline_dark}" />
-                            </DataTrigger>
-                        </ImageButton.Triggers>
-                    </ImageButton>
-
-                </Grid>
-            </VerticalStackLayout>
-        </Border>
-    </Grid>
-
-</ContentView>
+</Grid>

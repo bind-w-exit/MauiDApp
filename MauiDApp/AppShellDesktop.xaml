@@ -8,19 +8,19 @@
     Shell.FlyoutBehavior="Flyout">
 
     <FlyoutItem Title="Home" FlyoutIcon="home_outline.png">
-        <ShellContent ContentTemplate="{DataTemplate views:HomePage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:HomePage}" />
     </FlyoutItem>
     <FlyoutItem Title="Search" FlyoutIcon="search.png">
-        <ShellContent ContentTemplate="{DataTemplate views:SearchPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:SearchPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Upload" FlyoutIcon="cloud_upload_outline.png">
-        <ShellContent ContentTemplate="{DataTemplate views:UploadArtworkPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:UploadArtworkPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Notification" FlyoutIcon="bell_outline.png">
-        <ShellContent ContentTemplate="{DataTemplate views:NotificationPage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:NotificationPage}" />
     </FlyoutItem>
     <FlyoutItem Title="Profile" FlyoutIcon="person_outline.png">
-        <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}"/>
+        <ShellContent ContentTemplate="{DataTemplate views:MyProfilePage}" />
     </FlyoutItem>
 
 </Shell>
