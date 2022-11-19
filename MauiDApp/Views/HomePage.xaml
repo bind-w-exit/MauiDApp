@@ -54,7 +54,7 @@
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="viewmodels:ItemViewModel">
-                                <local:ItemView />
+                                <local:ItemView Margin="12" />
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>

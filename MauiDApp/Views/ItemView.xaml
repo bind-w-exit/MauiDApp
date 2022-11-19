@@ -8,20 +8,20 @@
 
 
     <Border
-        Margin="12"
         Padding="10"
         BackgroundColor="{AppThemeBinding Light={StaticResource White},
                                           Dark={StaticResource GrayBody}}"
         Stroke="Transparent"
         StrokeShape="RoundRectangle 32">
 
-        <Border.Shadow>
+        <!--  Shadows = incredible friezes  -->
+        <!--<Border.Shadow>
             <Shadow
                 Brush="Black"
                 Opacity="0.08"
                 Radius="24"
                 Offset="0, 10" />
-        </Border.Shadow>
+        </Border.Shadow>-->
 
         <VerticalStackLayout>
 
