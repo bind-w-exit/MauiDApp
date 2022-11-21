@@ -48,7 +48,61 @@
                         <SearchBar HeightRequest="40" Placeholder="Search items, collections, and accounts" />
                     </Border>
 
-                    <local:ItemView BindingContext="{Binding ItemVM}" />
+                    <local:ItemView Margin="14" BindingContext="{Binding ItemVM}" />
+                    <HorizontalStackLayout Margin="20,0,20,0">
+                        <Label
+                            Margin="0,0,0,3"
+                            FontFamily="EpilogueRegular"
+                            FontSize="16"
+                            Text="Reserve Price"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                                        Dark={StaticResource OffWhite}}"
+                            VerticalOptions="End" />
+                        <Label
+                            Margin="8,0,10,0"
+                            FontFamily="EpilogueBold"
+                            FontSize="24"
+                            Text="{Binding ItemVM.ReservePriceEth}"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                                        Dark={StaticResource OffWhite}}" />
+                        <Label
+                            Margin="0,0,0,4"
+                            FontFamily="EpilogueBold"
+                            FontSize="16"
+                            Text="{Binding ItemVM.ReservePriceUsd}"
+                            TextColor="{StaticResource Placeholder}"
+                            VerticalOptions="End" />
+                    </HorizontalStackLayout>
+
+                    <Button
+                        Margin="16"
+                        Command="{Binding RefreshCommand}"
+                        CornerRadius="8"
+                        FontFamily="EpilogueBold"
+                        FontSize="20"
+                        HeightRequest="60"
+                        Text="Place a bid"
+                        TextColor="{StaticResource OffWhite}">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                <GradientStop Offset="0.0" Color="#0038F5" />
+                                <GradientStop Offset="1.0" Color="#9F03FF" />
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Button
+                        Margin="16,0,16,80"
+                        BackgroundColor="Transparent"
+                        BorderColor="#0038F5"
+                        BorderWidth="2"
+                        Command="{Binding RefreshCommand}"
+                        CornerRadius="8"
+                        FontFamily="EpilogueBold"
+                        FontSize="20"
+                        HeightRequest="60"
+                        Text="View artwork"
+                        TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                                    Dark={StaticResource OffWhite}}" />
 
                     <CollectionView ItemsSource="{Binding ItemsVM}">
 
