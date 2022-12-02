@@ -1,43 +1,39 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using MauiDApp.Models;
 using MauiDApp.Services;
 using System.Collections.ObjectModel;
 
-namespace MauiDApp.ViewModels
+namespace MauiDApp.ViewModels;
+
+public partial class HomePageViewModel : BaseViewModel
 {
-    public partial class HomePageViewModel : BaseViewModel
+    [ObservableProperty]
+    private bool isRefreshing;
+
+    [ObservableProperty]
+    private ObservableCollection<ItemViewModel> itemsVM;
+
+    [ObservableProperty]
+    private ItemViewModel itemVM;
+
+    public HomePageViewModel()
     {
-        [ObservableProperty]
-        private bool isRefreshing;
+        itemsVM = new ObservableCollection<ItemViewModel>();
 
-        private ObservableCollection<Item> items;
-
-        [ObservableProperty]
-        private ObservableCollection<ItemViewModel> itemsVM;
-
-        [ObservableProperty]
-        private ItemViewModel itemVM;
-
-        public HomePageViewModel()
+        for (int i = 0; i < 5; i++)
         {
-            itemsVM = new ObservableCollection<ItemViewModel>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                itemsVM.Add(new ItemViewModel(NftService.GetItem()));
-            }
-
-            itemVM = new ItemViewModel(NftService.GetItem());
+            itemsVM.Add(new ItemViewModel(NftService.GetItem()));
         }
 
-        [RelayCommand]
-        private async void Refresh()
-        {
-            IsRefreshing = true;
-            await Task.Delay(TimeSpan.FromSeconds(5));
-            IsRefreshing = false;
-        }
-
+        itemVM = new ItemViewModel(NftService.GetItem());
     }
+
+    [RelayCommand]
+    private async void Refresh()
+    {
+        IsRefreshing = true;
+        await Task.Delay(TimeSpan.FromSeconds(5));
+        IsRefreshing = false;
+    }
+
 }

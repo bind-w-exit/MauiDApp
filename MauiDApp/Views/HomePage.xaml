@@ -11,11 +11,10 @@
 
         <Grid>
             <ScrollView>
-                <StackLayout>
+                <StackLayout Padding="15">
 
                     <Image
-                        Margin="15,20,0,0"
-                        HeightRequest="37"
+                        HeightRequest="40"
                         HorizontalOptions="Start"
                         Source="{AppThemeBinding Light=logo,
                                                  Dark=logo_dark}" />
@@ -23,7 +22,7 @@
                     <VerticalStackLayout Margin="0,15,0,0">
                         <Label
                             FontFamily="EpilogueBold"
-                            FontSize="18"
+                            FontSize="20"
                             HorizontalOptions="Center"
                             Text="Discover, collect, and sell"
                             TextColor="{AppThemeBinding Light={StaticResource GrayLabel},
@@ -32,7 +31,7 @@
                         <Label
                             Margin="0,5,0,0"
                             FontFamily="EpilogueBold"
-                            FontSize="32"
+                            FontSize="35"
                             HorizontalOptions="Center"
                             Text="Your Digital Art"
                             TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
@@ -40,7 +39,7 @@
                     </VerticalStackLayout>
 
                     <Border
-                        Margin="15"
+                        Margin="10,20,10,0"
                         BackgroundColor="{AppThemeBinding Light={StaticResource InputBackground},
                                                           Dark={StaticResource GrayBody}}"
                         Stroke="Transparent"
@@ -48,8 +47,8 @@
                         <SearchBar HeightRequest="40" Placeholder="Search items, collections, and accounts" />
                     </Border>
 
-                    <local:ItemView Margin="14" BindingContext="{Binding ItemVM}" />
-                    <HorizontalStackLayout Margin="20,0,20,0">
+                    <local:ItemView Margin="0,15,0,0" BindingContext="{Binding ItemVM}" />
+                    <HorizontalStackLayout Margin="5,10,0,0">
                         <Label
                             Margin="0,0,0,3"
                             FontFamily="EpilogueRegular"
@@ -75,7 +74,7 @@
                     </HorizontalStackLayout>
 
                     <Button
-                        Margin="16"
+                        Margin="0,20,0,0"
                         Command="{Binding RefreshCommand}"
                         CornerRadius="8"
                         FontFamily="EpilogueBold"
@@ -91,10 +90,10 @@
                         </Button.Background>
                     </Button>
                     <Button
-                        Margin="16,0,16,80"
+                        Margin="0,15,0,80"
                         BackgroundColor="Transparent"
                         BorderColor="#0038F5"
-                        BorderWidth="2"
+                        BorderWidth="1"
                         Command="{Binding RefreshCommand}"
                         CornerRadius="8"
                         FontFamily="EpilogueBold"
@@ -104,11 +103,47 @@
                         TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
                                                     Dark={StaticResource OffWhite}}" />
 
+                    <Grid Margin="0,0,5,0" ColumnDefinitions="Auto, *, Auto">
+                        <Ellipse
+                            Grid.Column="0"
+                            Margin="0,3,0,0"
+                            Fill="#FD0025"
+                            HeightRequest="11"
+                            WidthRequest="11" />
+
+
+                        <Label
+                            Grid.Column="1"
+                            Margin="7,0,0,0"
+                            FontFamily="EpilogueBold"
+                            FontSize="24"
+                            Text="Live auctions"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayBackground},
+                                                        Dark={StaticResource OffWhite}}" />
+                        <Button
+                            Grid.Column="2"
+                            BackgroundColor="Transparent"
+                            BorderColor="{StaticResource Placeholder}"
+                            BorderWidth="1"
+                            Command="{Binding RefreshCommand}"
+                            CornerRadius="8"
+                            FontFamily="EpilogueRegular"
+                            FontSize="16"
+                            HeightRequest="40"
+                            Text="View all"
+                            TextColor="{AppThemeBinding Light={StaticResource GrayLabel},
+                                                        Dark={StaticResource WhiteBackground}}"
+                            WidthRequest="120" />
+                    </Grid>
+
                     <CollectionView ItemsSource="{Binding ItemsVM}">
 
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="viewmodels:ItemViewModel">
-                                <local:ItemView Margin="12" />
+                                <VerticalStackLayout>
+                                    <local:ItemView Margin="0,15,0,0" />
+                                    <Label Text="{Binding TimeLeft}" TextColor="White" />
+                                </VerticalStackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
@@ -118,5 +153,4 @@
 
         </Grid>
     </RefreshView>
-
 </ContentPage>
